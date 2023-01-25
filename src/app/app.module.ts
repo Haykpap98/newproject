@@ -10,12 +10,13 @@ import { CreateStudentComponent } from './create-student/create-student.componen
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { ListStudentComponent } from './list-student/list-student.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     CreateStudentComponent,
     EditStudentComponent,
-    ListStudentComponent
+    ListStudentComponent,
   ],
   imports: [
     BrowserModule,

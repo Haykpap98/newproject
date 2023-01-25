@@ -2,18 +2,35 @@
     <div class="mb-3">
         <label>FirstName</label>
         <input type="text" formControlName="FirstName" class="form-control" placeholder="FirstName" required>
+
+        <p style="color: red;" *ngIf="studentForm.get('FirstName')?.errors?.['minlength']" class="error">
+            Name shouldn't be less than 4 words
+        </p>
     </div>
     <div class="mb-3">
         <label>LastName</label>
         <input type="text" formControlName="LastName" class="form-control" placeholder="LastName" required>
+
+        <p style="color: red;" *ngIf="studentForm.get('LastName')?.errors?.['minlength']" class="error">
+            Name shouldn't be less than 4 words
+        </p>
     </div>
     <div class="mb-3">
         <label>Email</label>
         <input type="email" formControlName="Email" class="form-control" placeholder="Email" required>
+        <p style="color: red;" *ngIf="studentForm.get('Email')?.errors?.['pattern']" class="error">
+            <sup>*</sup>Please enter correct email
+        </p>
     </div>
     <div class="mb-3">
         <label>Contact</label>
         <input type="text" formControlName="Contact" class="form-control" placeholder="Contact" required>
+        <p style="color: red;" *ngIf="studentForm.get('Contact')?.errors?.['pattern']" class="error">
+            <sup>*</sup>Use numbers only number
+        </p>
+        <p style="color: red;" *ngIf="studentForm.get('Contact')?.errors?.['minlength']" class="error">
+            <sup>*</sup>Name shouldn't be less than 4
+        </p>
     </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-primary" [disabled]="!studentForm.valid">Create</button>

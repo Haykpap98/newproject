@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from '../student.service';
 
@@ -18,10 +18,15 @@ export class CreateStudentComponent implements OnInit{
     public router: Router
   ){
     this.studentForm = this.formBuilder.group({
-      FirstName: [''],
-      LastName: [''],
-      Contact: [''],
-      Email: ['']
+      FirstName: ['',[Validators.required, Validators.minLength(4)]],
+      LastName: ['',[Validators.required, Validators.minLength(4)]],
+      Contact: ['',[Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(4)]],
+      Email: ['',
+      [
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),        
+      ],
+    ]
       
     })
   }

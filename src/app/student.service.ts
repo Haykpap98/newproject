@@ -6,7 +6,6 @@ import { Student } from './student.model';
   providedIn: 'root'
 })
 export class StudentService {
- // private productsCollection = '/products';
   private studentsCollection = '/students';
 
   constructor(private angularFirestore: AngularFirestore) { }
