@@ -61,7 +61,7 @@ export class EditStudentComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit1() {
     const id = this.act.snapshot.paramMap.get('id');
 
     this.studentService.updateStudent(this.editForm.value, id);

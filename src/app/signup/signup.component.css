@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  padding-top: 25px;
+}
+form input {
+  margin: 5px;
+}/*# sourceMappingURL=signup.component.css.map */
