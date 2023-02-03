@@ -27,17 +27,14 @@ export class LoginComponent implements OnInit{
   }
 
   loginUser() {
-      if (this.loginForm.invalid)
-          return;
-
       this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result) => {
           if (result == null) {                              
               console.log('logging in...');
-              this.router.navigate(['/dashboard']);                
+              this.router.navigate(['/dashboard/list-student']);                
           }
           else if (result.isValid == false) {
-              console.log('login error', result);
-              this.firebaseErrorMessage = result.message;
+            //   console.log('login error', result);
+              this.router.navigate(['signup']);      
           }
       });
   }

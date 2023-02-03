@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"create-student.component.css"}
+{"version":3,"sources":["create-student.component.scss","create-student.component.css"],"names":[],"mappings":"AACA;EACI,iBAAA;EACA,kBAAA;ACAJ;;ADEA;EACI,kBAAA;EACA,gBAAA;EACA,UAAA;ACCJ","file":"create-student.component.css"}

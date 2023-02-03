@@ -5,5 +5,5 @@ export interface Student {
     LastName: string
     Contact: string
     Email: string
-    
+   
 }

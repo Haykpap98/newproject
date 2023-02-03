@@ -1,31 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { Student } from '../student.model';
 import { StudentService } from '../student.service';
+import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-student',
   templateUrl: './list-student.component.html',
-  styleUrls: ['./list-student.component.scss']
+  styleUrls: ['./list-student.component.scss'],
 })
-export class ListStudentComponent implements OnInit{
-  Student!: Student[]
-  
-  constructor(private studentService: StudentService){}
- 
+export class ListStudentComponent implements OnInit  {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  Student!: Student[] ;
+  first = 0;
+
+  rows = 10;
+
+  constructor(
+    private studentService: StudentService,
+    public dialog: MatDialog
+  ) {}
+
+
+
   ngOnInit(): void {
-   this.studentService.getStudentList().subscribe(res => {
-     this.Student = res.map( e => {
-       return{
-         id: e.payload.doc.id,
-         ...e.payload.doc.data() as {}
-       } as unknown  as Student;   
-     })
-   })
+    this.studentService.getStudentList().subscribe((res) => {
+      this.Student = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as {}),
+        } as unknown as Student;
+      });
+      console.log(this.Student);
+    });
   }
-  
-  removeStudent(student: any){
-    if(confirm("Are you sure to delete" + " " + student.FirstName + " " + student.LastName)){
-      this.studentService.deleteStudent(student)
-    }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    student: any
+  ): void {
+    const dialogRef = this.dialog.open(MatDialogComponent, {
+      width: '350px',
+      position: {
+        left: '45%',
+      },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.studentService.deleteStudent(student);
+      }
+    });
   }
 }

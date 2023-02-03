@@ -4,15 +4,17 @@ import { CreateStudentComponent } from './create-student/create-student.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { HomeComponent } from './home/home.component';
+import { ImageComponent } from './image/image.component';
 import { ListStudentComponent } from './list-student/list-student.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent , canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'image', component: ImageComponent },
   { path: 'signup', component: SignupComponent },
   {
     path: 'dashboard',
@@ -24,8 +26,7 @@ const routes: Routes = [
       { path: 'update-student/:id', component: EditStudentComponent },
     ],
   },
-  // { path: '**', component: HomeComponent },
-  //  {path: '',redirectTo: '/create', pathMatch: 'full'},
+  
 ];
 
 @NgModule({

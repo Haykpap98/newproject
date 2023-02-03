@@ -1,16 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Home</a>
-    <div class="collapse navbar-collapse" id="navbarSu">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="create" routerLinkActive="active">Add Student</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="list-student" routerLinkActive="active">View Students</a>
-        </li>
-      </ul>
+    <div class="row w-100">
+      <div class="col-11">   
+        <div class="collapse navbar-collapse" id="navbarSu">
+          <ul class="navbar-nav ">
+            <li class="nav-item">
+              <!-- <a class="navbar-brand" href="#"></a> -->
+              <a class="nav-link" routerLink="list-student" routerLinkActive="active">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="create" routerLinkActive="active">
+                Add Student
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="list-student" routerLinkActive="active">View Students</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="collapse navbar-collapse" id="navbarSu">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" id="log" (click)="logout()" routerLinkActive="active">Log out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+
 <router-outlet></router-outlet>

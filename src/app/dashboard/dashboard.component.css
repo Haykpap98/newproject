@@ -1,3 +1,8 @@
-.navbar {
-  margin-bottom: 25px;
+.nav-item {
+  list-style: none;
+}
+
+#log {
+  padding-left: 70px;
+  cursor: pointer;
 }/*# sourceMappingURL=dashboard.component.css.map */

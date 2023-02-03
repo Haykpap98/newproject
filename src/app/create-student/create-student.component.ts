@@ -37,6 +37,6 @@ export class CreateStudentComponent implements OnInit{
   
   onSubmit1(){
     this.studentService.createStudent(this.studentForm.value)
-    this.router.navigate(['list-student'])
+    this.router.navigate(['/dashboard/list-student'])
   }
 }

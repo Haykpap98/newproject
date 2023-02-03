@@ -7,6 +7,7 @@ import { Student } from './student.model';
 })
 export class StudentService {
   private studentsCollection = '/students';
+  paginator: any;
 
   constructor(private angularFirestore: AngularFirestore) { }
   getStudentDoc(id: string){
@@ -39,7 +40,7 @@ export class StudentService {
       FirstName: student.FirstName,
       LastName: student.LastName,
       Contact: student.Contact,
-      Email: student.Email
+      Email: student.Email,
     })
   }
 }

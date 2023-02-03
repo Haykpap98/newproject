@@ -18,8 +18,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import { TableModule } from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
+import {AccordionModule} from 'primeng/accordion';
+import { DividerModule } from "primeng/divider";
+// import {provideStorage, getStorage} from '@angular/fire/storage'
+import {AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ImageComponent } from './image/image.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    MatDialogComponent,
+    ImageComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +55,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatInputModule,
     BrowserAnimationsModule,
-
-
+    MatTabsModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatIconModule,
+    MatTableModule,
+    TableModule,
+    ButtonModule,
+    AccordionModule,
+    DividerModule,
+    AngularFireStorageModule,
+    
+    // provideStorage(()=> getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent]

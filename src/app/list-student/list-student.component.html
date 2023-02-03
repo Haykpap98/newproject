@@ -1,24 +1,113 @@
-<table class="table">
-  <thead>
-    <tr>
+<!-- <div>
+  <table class="table">
+    <thead>
+      <tr>
         <th scope="col">#</th>
-        <th scope="col">FirstName</th>
-        <th scope="col">LastName</th>
-        <th scope="col">Email</th>
-        <th scope="col">Contact</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of Student; let i = index">
+        <th scope="col" class="col">FirstName</th>
+        <th scope="col" class="col">LastName</th>
+        <th scope="col" class="col">Email</th>
+        <th scope="col" class="col">Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of Student; let i = index  ">
         <th scope="row">{{ i + 1 }}</th>
         <td>{{student.FirstName}}</td>
         <td>{{student.LastName}}</td>
         <td>{{student.Email}}</td>
         <td>{{student.Contact}}</td>
-        <td>
-            <span (click)="removeStudent(student)" class="btn btn-danger">Delete</span> &nbsp;
-            <span routerLink="/update-student/{{student.id}}" class="btn btn-primary">Edit</span>
+        <td class="button">
+           <button mat-raised-button (click)="openDialog('0ms', '0ms',student)" id="delete">Delete</button>
+           <button routerLink="/dashboard/update-student/{{student.id}}" class="btn">Edit</button>
         </td>
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
+  <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+  </mat-paginator>
+</div>
+ -->
+
+<!-- <div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+ 
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef=" let i = index "> {{ i + 1 }} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="FirstName">
+      <th mat-header-cell *matHeaderCellDef> FirstName </th>
+      <td mat-cell *matCellDef="let student"> {{student.FirstName}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="LastName">
+      <th mat-header-cell *matHeaderCellDef> LastName </th>
+      <td mat-cell *matCellDef="let student "> {{student.LastName}} </td>
+    </ng-container>
+
+ 
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let student "> {{student.Email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Contact">
+      <th mat-header-cell *matHeaderCellDef> Contact </th>
+      <td mat-cell *matCellDef="let student "> {{student.Contact}} </td>
+    </ng-container>
+    
+    <ng-container>
+      <td class="button">
+        <button mat-raised-button (click)="openDialog('0ms', '0ms',student)" id="delete">Delete</button>
+        <button routerLink="/dashboard/update-student/{{student.id}}" class="btn">Edit</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div> -->
+
+
+
+<div class="container">
+  <div class="row table-card">
+    <div class="col-md-12 card">
+      <p-table [value]="Student" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '50rem'}"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,25]">
+      <ng-template pTemplate="header">
+          <tr>
+               <th scope="col">#</th>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-student let-rowIndex="rowIndex" >
+          <tr >
+            <th scope="row">{{ rowIndex + 1 }}</th>
+              <td>{{student.FirstName}}</td>
+              <td>{{student.LastName}}</td>
+              <td>{{student.Email}}</td>
+              <td>{{student.Contact}}</td>
+              <td class="button">
+                <button mat-raised-button (click)="openDialog('0ms', '0ms',student)" id="delete">Delete</button>
+                <button routerLink="/dashboard/update-student/{{student.id}}" class="btn">Edit</button>
+             </td>
+          </tr>
+      </ng-template>
+  </p-table>
+    </div>
+  </div>
+</div>

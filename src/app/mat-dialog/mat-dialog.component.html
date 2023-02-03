@@ -1,0 +1,16 @@
+<div >
+    <div class="content-container">
+        <div class="close"><mat-icon id="close-icon" (click)="closeDialog()">close</mat-icon></div>
+        <div class="text">
+            <h1 mat-dialog-title>Delete file</h1>
+            <div mat-dialog-content>
+               <h1> Would you like to delete ?</h1>
+            </div>
+        </div>
+
+    </div>
+    <div class="mat-dialog" mat-dialog-actions>
+        <button mat-button [mat-dialog-close]='true' cdkFocusInitial id="yes-button">Ok</button>
+        <button mat-button mat-dialog-close id="no-button">No</button>       
+    </div>
+</div>

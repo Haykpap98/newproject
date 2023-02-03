@@ -1,31 +1,42 @@
-<button mat-raised-button color="primary" routerLink="/home">
-    Home
-</button>
+<app-home></app-home>
+<div class="card">
+    <mat-card>
+        <form [formGroup]="signupForm" (ngSubmit)="signup()">
+            <p class="register">Register</p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input autocomplete="off" formControlName="displayName" type="text" matInput
+                        placeholder="Display Name">
+                </mat-form-field>
+            </p>
 
-<mat-card>
-    <form [formGroup]="signupForm" (ngSubmit)="signup()">
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Full Name</mat-label>
-                <input autocomplete="off" formControlName="displayName" type="text" matInput placeholder="Display Name">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input formControlName="email" type="email" matInput placeholder="Email">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password">
-            </mat-form-field>
-        </p>
-        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
-            <span>{{ firebaseErrorMessage }}</span>
-        </div>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" type="email" matInput placeholder="Email">
+                </mat-form-field>
+            </p>
+            <label>
+                <input type="file" class="text-nowrap text-truncate" (change)="chooseFile($event)"  placeholder="file" formControlName="file" />
+            </label>
 
-        <button mat-raised-button color="primary">Signup</button>
-    </form>
-</mat-card>
+            <button class="btn btn-success btn-sm"  >
+                Upload
+            </button>
+            
+                <!-- <p>
+                    <label for="Image">Image File</label>
+                    <input type="file" (change)="upload($event)" accept="*.png.jpg" id="" formControlName="file">
+                    <button (click)="uploadImage()"> Upload Image </button>
+                </p> -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input autocomplete="off" formControlName="password" type="password" matInput
+                        placeholder="Password">
+                </mat-form-field>
+            
+            <button mat-raised-button color="primary" class="btn" id="btn">Signup</button>
+        </form>
+    </mat-card>
+</div>

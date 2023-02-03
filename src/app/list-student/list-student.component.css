@@ -1,1 +1,33 @@
-/*# sourceMappingURL=list-student.component.css.map */
+button {
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+#delete {
+  background: rgb(233, 36, 36);
+}
+
+.btn {
+  background: rgb(251, 150, 28);
+  width: 80px;
+}
+
+.table {
+  margin-top: 25px;
+}
+.table .col {
+  font-size: 20px;
+  padding-right: 35px;
+}
+
+.button {
+  text-align: end;
+}
+
+.card {
+  padding-top: 25px;
+}
+
+.table-card {
+  padding-top: 55px;
+}/*# sourceMappingURL=list-student.component.css.map */

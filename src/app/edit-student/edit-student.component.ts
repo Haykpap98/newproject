@@ -65,6 +65,6 @@ export class EditStudentComponent implements OnInit {
     const id = this.act.snapshot.paramMap.get('id');
 
     this.studentService.updateStudent(this.editForm.value, id);
-    this.router.navigate(['list-student']);
+    this.router.navigate(['/dashboard/list-student']);
   }
 }
