@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
@@ -30,7 +31,20 @@ import {AccordionModule} from 'primeng/accordion';
 import { DividerModule } from "primeng/divider";
 // import {provideStorage, getStorage} from '@angular/fire/storage'
 import {AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { ImageComponent } from './image/image.component';
+import { UploadFormComponent } from './components/upload-form/upload-form.component';
+import { UploadListComponent } from './components/upload-list/upload-list.component';
+import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
+import { ProductComponent } from './product/product.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { PasswordModule } from "primeng/password";
+import {FileUploadModule} from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
+import { AddPostsComponent } from './add-posts/add-posts.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputMaskModule} from 'primeng/inputmask';
+import {CalendarModule} from 'primeng/calendar';
+import { PostsComponent } from './posts/posts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +56,14 @@ import { ImageComponent } from './image/image.component';
     LoginComponent,
     SignupComponent,
     MatDialogComponent,
-    ImageComponent,
+    UploadFormComponent,
+    UploadListComponent,
+    UploadDetailsComponent,
+    ProductComponent,
+    AddProductComponent,
+    EditProductComponent,
+    AddPostsComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +86,13 @@ import { ImageComponent } from './image/image.component';
     AccordionModule,
     DividerModule,
     AngularFireStorageModule,
-    
+    MatFormFieldModule,
+    PasswordModule,
+    FileUploadModule,
+    HttpClientModule,
+    InputTextareaModule,
+    InputMaskModule,
+    CalendarModule
     // provideStorage(()=> getStorage())
   ],
   providers: [],

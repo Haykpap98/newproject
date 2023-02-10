@@ -21,27 +21,31 @@
 </mat-card>
 
 </div> -->
-
-<div class="card">
-    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
-        <div class="grid">
-            <div class="col-5 flex align-items-center justify-content-center">
-                <p>Login</p>
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="username">Email</label>
-                        <input autocomplete="off" formControlName="email" type="email" placeholder="Email">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 card">
+            <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
+                <div class="grid">
+                    <div class="col-5 flex align-items-center justify-content-center">
+                        <p>Login</p>
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="username">Email</label>
+                                <input autocomplete="off" formControlName="email" type="email" placeholder="Email">
+                            </div>
+                            <div class="p-field">
+                                <label for="password">Password</label>
+                                <input autocomplete="off" formControlName="password" type="password"
+                                    placeholder="Password">
+                            </div>
+                            <button mat-raised-button color="primary" class="btn" id="btn">Login</button>
+                        </div>
                     </div>
-                    <div class="p-field">
-                        <label for="password" >Password</label>
-                        <input autocomplete="off" formControlName="password" type="password"  placeholder="Password" >
-                    </div>
-                    <button mat-raised-button color="primary" class="btn" id="btn">Login</button>
+                    <!-- <div class="col-5 flex align-items-center justify-content-center">
+                            <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success" routerLink="/signup"  class="btn"></p-button>
+                        </div> -->
                 </div>
-            </div>
-            <!-- <div class="col-5 flex align-items-center justify-content-center">
-                <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success" routerLink="/signup"  class="btn"></p-button>
-            </div> -->
+            </form>
         </div>
-    </form>
+    </div>
 </div>

@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
+
   loginForm: FormGroup;
   firebaseErrorMessage: string;
 
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit{
   loginUser() {
       this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result) => {
           if (result == null) {                              
-              console.log('logging in...');
+              console.log('logging in  ...' );
               this.router.navigate(['/dashboard/list-student']);                
           }
           else if (result.isValid == false) {

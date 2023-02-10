@@ -1,0 +1,15 @@
+.post {
+  padding-top: 25px;
+}
+
+.posts-list {
+  padding-top: 25px;
+}
+.posts-list span {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
+}
+.posts-list h4 {
+  text-align: center;
+  font-weight: 500;
+}/*# sourceMappingURL=posts.component.css.map */

@@ -3,7 +3,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import {  Storage,ref,uploadBytesResumable,getDownloadURL, FirebaseStorage,} from '@angular/fire/storage';
+// import {  Storage,ref,uploadBytesResumable,getDownloadURL, FirebaseStorage,} from '@angular/fire/storage';
+import { FileUpload } from '../models/file-upload.model';
+import { FileUploadService } from '../services/file-upload.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,16 +13,21 @@ import {  Storage,ref,uploadBytesResumable,getDownloadURL, FirebaseStorage,} fro
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  hide = true;
   path!: String;
-  public file: any = {};
+  // public file: any = {};
   signupForm!: FormGroup;
   firebaseErrorMessage: string;
-  storage!: FirebaseStorage;
-
+  // storage!: FirebaseStorage;
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload;
+  percentage = 0;
+  value3!: string;
   constructor(
     private authService: AuthService,
     private router: Router,
     private afAuth: AngularFireAuth,
+    private uploadService: FileUploadService
   ) {
     this.firebaseErrorMessage = '';
   }
@@ -30,7 +37,7 @@ export class SignupComponent implements OnInit {
       displayName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
-      file: new FormControl('', Validators.required),
+      mediaUrl: new FormControl(null, Validators.required),
     });
   }
 
@@ -39,47 +46,71 @@ export class SignupComponent implements OnInit {
       this.signupForm.reset();
       return;
     }
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        this.uploadService
+          .pushFileToStorage(this.currentFileUpload)
+          .then();
+      }
+    }
     this.authService.signupUser(this.signupForm.value).then((result) => {
       if (result == null) {
         this.router.navigate(['/dashboard/list-student']);
-      } else if (result.isValid == false) {
-        // this.router.navigate(['/signup']);
-        // // this.firebaseErrorMessage = result.message;
-        // console.log('login error', result);
       }
     });
   }
 
-  // upload($event:any){
-  //    this.path = $event.target.files[0]
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  // upload(): void {
+  // if (this.selectedFiles) {
+  //   const file: File | null = this.selectedFiles.item(0);
+  //   this.selectedFiles = undefined;
+
+  //   if (file) {
+  //     this.currentFileUpload = new FileUpload(file);
+  //     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+
+  //     );
+  //   }
+  // }
   // }
 
-  // uploadImage(){
-  //   console.log(this.path)
+  // // upload($event:any){
+  // //    this.path = $event.target.files[0]
+  // // }
 
-  //   this.storage.upload("/files" + Math.random() + this.path,this.path)
+  // // uploadImage(){
+  // //   console.log(this.path)
+
+  // //   this.storage.upload("/files" + Math.random() + this.path,this.path)
+  // // }
+
+  // chooseFile($event: any) {
+  //   this.file = $event.target.files[0];
   // }
-
-  chooseFile($event: any) {
-    this.file = $event.target.files[0];
-  }
-  addData() {
-    const storageRef = ref(this.storage, 'files/' + this.file.name);
-    const uploadTask = uploadBytesResumable(storageRef, this.file);
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const progress =(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-      },
-      (error) => {
-        console.log(error.message);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downLoadURL) =>
-          console.log('File available at', downLoadURL)
-        );
-      }
-    );
-  }
+  // addData() {
+  //   const storageRef = ref(this.storage, 'files/' + this.file.name);
+  //   const uploadTask = uploadBytesResumable(storageRef, this.file);
+  //   uploadTask.on(
+  //     'state_changed',
+  //     (snapshot) => {
+  //       const progress =(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //       console.log('Upload is ' + progress + '% done');
+  //     },
+  //     (error) => {
+  //       console.log(error.message);
+  //     },
+  //     () => {
+  //       getDownloadURL(uploadTask.snapshot.ref).then((downLoadURL) =>
+  //         console.log('File available at', downLoadURL)
+  //       );
+  //     }
+  //   );
+  // }
 }

@@ -30,4 +30,13 @@ export class PostsComponent {
       console.log(this.Posts)
     });
   }
+
+  addComment(){
+    alert(this.addComment)
+    
+  }
+  romoveComment(){
+    
+  }
+  
 }

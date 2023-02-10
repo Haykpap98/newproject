@@ -5,15 +5,13 @@ p{
 }
 form{
     margin: auto;
-    padding-top: 100px;
-    padding: 20px;
-    width: 22%;
-    height: 45%;
+    margin-top: 20%;
+    padding: 40px;
+    width: 30%;
     background: #F9F9F9;
     border-radius: 5px;
     input{
-        width: 200%;
-       margin: 11px;
+       margin: 15px;
        padding-left: 15px;
        padding-right: 15px;
        border-radius: 5px;
@@ -21,8 +19,7 @@ form{
     }
 }
 .card{
-    height: 80vh;
-    border-bottom: none;
+    border: none;
 }
 .btn{
    width: 100%;

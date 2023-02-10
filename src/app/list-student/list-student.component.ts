@@ -33,7 +33,6 @@ export class ListStudentComponent implements OnInit  {
           ...(e.payload.doc.data() as {}),
         } as unknown as Student;
       });
-      console.log(this.Student);
     });
   }
 
@@ -45,7 +44,8 @@ export class ListStudentComponent implements OnInit  {
     const dialogRef = this.dialog.open(MatDialogComponent, {
       width: '350px',
       position: {
-        left: '45%',
+        top: '8%',
+        left: '35%',
       },
       enterAnimationDuration,
       exitAnimationDuration,

@@ -14,14 +14,14 @@
             <h1>Comments</h1>
              <div class="container">   
                 <div class="form-group" >  
-                    <form ng-controller="commentControler">  
-                        <textarea class="form-control" rows="5" placeholder="Your Comment Please....."  ng-model="CommentText"></textarea>  
+                    <form>  
+                        <textarea class="form-control" rows="5" placeholder="Your Comment Please....." ></textarea>  
                         <br />  
-                        <button class="btn btn-success pull-right" ng-click="addComment()">Comment.</button>  
+                        <button class="btn btn-success pull-right" (click)="addComment()">Comment.</button>  
                         <br />  
                         <ul class="list-group" >  
-                            <li class="list-group-item" ng-repeat="cmt in commentArray">
-                                <a href="" ng-click="romoveComment($comText);" ><span class="glyphicon glyphicon-trash" style="float:right"> </span></a>  
+                            <li class="list-group-item" > 
+                                <a href="" (click)="romoveComment();" ><span class="glyphicon glyphicon-trash" style="float:right"> </span></a>  
                             </li>  
                         </ul>  
                     </form>  

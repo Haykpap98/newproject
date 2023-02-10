@@ -2,21 +2,19 @@ form {
   margin: auto;
   padding-top: 100px;
   padding: 20px;
-  width: 22%;
+  width: 25%;
   background: #F9F9F9;
   border-radius: 5px;
 }
 form input {
   width: 100%;
-  margin: 6px;
   border-radius: 5px;
   border: 1px solid rgb(132, 132, 132);
 }
 
 .card {
   padding-top: 10%;
-  height: 80vh;
-  border-bottom: none;
+  border: none;
 }
 
 #btn {
@@ -30,4 +28,13 @@ form input {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   text-align: center;
   padding-bottom: 10px;
+}
+
+.image {
+  padding-bottom: 25px;
+  padding-left: 2px;
+}
+
+mat-card {
+  box-shadow: none;
 }/*# sourceMappingURL=signup.component.css.map */

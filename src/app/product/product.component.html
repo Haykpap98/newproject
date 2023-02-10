@@ -8,8 +8,8 @@
                 <span>{{product.description}}</span>
             </div>
             <div class="button">
-                <button mat-raised-button (click)="openDialog('0ms', '0ms',product)" id="delete">Delete</button>
-                <button mat-raised-button routerLink="/dashboard/update-product/{{product.id}}" class="btn">Edit</button>
+                <button mat-raised-button (click)="openDialog('0ms', '0ms',product)" id="delete" [disabled]="currentUser.uid !== product.created_by">Delete</button>
+                <button mat-raised-button routerLink="/dashboard/update-product/{{product.id}}" class="btn" [disabled]="currentUser.uid !== product.created_by" >Edit</button>
             </div>          
         </div>
     </div>

@@ -2,13 +2,14 @@ button{
     margin-right: 10px;
     border-radius: 10px;
 }
-#delete{
-    background: rgb(233, 36, 36);
-}
-.btn{
-    background: rgb(251, 150, 28);
-    width: 80px;
-}
+// #delete{
+//     width: 50%;
+// }
+// .btn{
+//     background: rgb(251, 150, 28);
+//     width: 80px;
+//     color: white;
+// }
 .table{
     margin-top: 25px;
     .col{
@@ -25,4 +26,8 @@ button{
 
 .table-card{
     padding-top: 55px;
+}
+.container{
+    position: absolute;
+    padding-left: 25%;
 }

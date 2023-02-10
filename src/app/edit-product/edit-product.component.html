@@ -1,0 +1,28 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit1()" novalidate class="form">
+    <div class="mb-3">
+        <label>Product Name</label>
+        <input type="text" formControlName="productName" class="form-control" placeholder="Product Name" required>
+
+        <p style="color: red;" *ngIf="editForm.get('productName')?.errors?.['minlength']" class="error">
+            Name shouldn't be less than 4 words
+        </p>
+    </div>
+    <div class="mb-3">
+        <label>Price</label>
+        <input type="text" formControlName="price" class="form-control" placeholder="Price" required>
+    </div>
+    <div class="mb-3">
+        <label>Description</label>
+        <input type="text" formControlName="description" class="form-control" placeholder="description" required>
+    </div>
+    <div class="mb-3 ">
+        <div class="col-7 image">
+            <input type="file" (change)="selectFile($event)" />
+        </div>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary" >Update</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+</form>
