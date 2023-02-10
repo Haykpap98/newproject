@@ -32,11 +32,10 @@ export class PostsComponent {
   }
 
   addComment(){
-    alert(this.addComment)
-    
+     
   }
   romoveComment(){
-    
+
   }
   
 }
