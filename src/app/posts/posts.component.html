@@ -14,8 +14,8 @@
             <h1>Comments</h1>
              <div class="container">   
                 <div class="form-group" >  
-                    <form>  
-                        <textarea class="form-control" rows="5" placeholder="Your Comment Please....." ></textarea>  
+                    <form [formGroup]="textAreaForm">  
+                        <textarea class="form-control" rows="5" placeholder="Your Comment Please....." formControlName="textArea"></textarea>  
                         <br />  
                         <button class="btn btn-success pull-right" (click)="addComment()">Comment.</button>  
                         <br />  
