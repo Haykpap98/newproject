@@ -5,6 +5,7 @@ import { StudentService } from '../student.service';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-list-student',
@@ -14,26 +15,32 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListStudentComponent implements OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   Student!: Student[] ;
+  currentUser: any
   first = 0;
 
   rows = 10;
 
   constructor(
     private studentService: StudentService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService:AuthService
   ) {}
 
 
 
   ngOnInit(): void {
+    this.authService.getCurrentUser().subscribe((res)=>{
+      this.currentUser = res
+    })
     this.studentService.getStudentList().subscribe((res) => {
       this.Student = res.map((e) => {
         return {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as {}),
         } as unknown as Student;
-      });
+      });   
     });
+   
   }
 
   openDialog(
@@ -53,6 +60,7 @@ export class ListStudentComponent implements OnInit  {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.studentService.deleteStudent(student);
+        console.log(student)
       }
     });
   }

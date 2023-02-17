@@ -1,16 +1,29 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-3 border product" *ngFor="let product of Product; let i = index">
-            <div class="image"><img src="{{ product.file }}" alt="{{ product.file }}" height="270px" width="270px" /></div>
-            <div class="product-list">
-                <h4>{{product.productName}}</h4>
-                <p><span>Price:</span>{{product.price}}</p>
-                <span>{{product.description}}</span>
+        <div class="col-md-3  product" *ngFor="let product of Product; let i = index "
+            [ngStyle]="{'display': currentUser.uid !== product.created_by ? 'none' : 'block' }">
+            <div class="border">
+                <div class="image"><img src="{{ product.file }}" alt="{{ product.file }}" height="270px"
+                        width="270px" />
+                </div>
+                <div class="product-list">
+                    <h4>{{product.productName }}</h4>
+                    <p><span>Price:</span>{{product.price}}</p>
+                    <span>{{product.description}}</span>
+                </div>
+                <div class="button">
+                    <button mat-raised-button (click)="openDialog('0ms', '0ms',product)" id="delete">Delete</button>
+                    <button mat-raised-button routerLink="/dashboard/update-product/{{product.id}}"
+                        class="btn">Edit</button>
+                </div>
             </div>
-            <div class="button">
-                <button mat-raised-button (click)="openDialog('0ms', '0ms',product)" id="delete" [disabled]="currentUser.uid !== product.created_by">Delete</button>
-                <button mat-raised-button routerLink="/dashboard/update-product/{{product.id}}" class="btn" [disabled]="currentUser.uid !== product.created_by" >Edit</button>
-            </div>          
+
+
         </div>
     </div>
 </div>
+<li class="nav-item" style="list-style: none;">
+    <a class="nav-link" routerLink="/dashboard/add-product" routerLinkActive="active">
+        <button pButton pRipple type="button" label="Add Product" class="p-button-rounded p-button-success"></button>
+    </a>
+</li>

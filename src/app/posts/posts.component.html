@@ -1,33 +1,38 @@
+<li class="nav-item">
+  <a class="nav-link" routerLink="/dashboard/add-posts" routerLinkActive="active">
+    <button pButton pRipple type="button" label="Add Posts" class="p-button-rounded p-button-success"></button>
+  </a>
+</li>
 <div class="container">
-    <div class="row post">
-        <div class="col-md-12 border " *ngFor="let post of Posts; let i = index">
-            <div class="posts-list">
-                <div>
-                    <span>Author:{{post.author}}</span>
-                    <!-- <p>{{post.date}}</p> -->
-                </div>
-                <h4> {{post.title}}</h4>
-                <p>{{post.text}}</p>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <h1>Comments</h1>
-             <div class="container">   
-                <div class="form-group" >  
-                    <form [formGroup]="textAreaForm">  
-                        <textarea class="form-control" rows="5" placeholder="Your Comment Please....." formControlName="textArea"></textarea>  
-                        <br />  
-                        <button class="btn btn-success pull-right" (click)="addComment()">Comment.</button>  
-                        <br />  
-                        <!-- <ul class="list-group" >  
-                            <li class="list-group-item" > 
-                                <a href="" (click)="romoveComment();" ><span class="glyphicon glyphicon-trash" style="float:right"> </span></a>  
-                            </li>  
-                        </ul>   -->
-                    </form>  
-                </div>  
-            </div>   
-         
-        </div>
+  <div class="row table-card">
+    <div class="col-md-12 card">
+      <p-table [value]="Posts" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        [tableStyle]="{'min-width': '50rem'}"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[3,5,10]">
+        <ng-template pTemplate="header">
+          <tr>
+            <th scope="col">#</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Text</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-post let-rowIndex="rowIndex">
+          <tr>
+            <th scope="row">{{ rowIndex + 1 }}</th>
+            <td>{{post.author}}</td>
+            <td>{{post.date | date:'shortDate'}}</td>
+            <td>{{post.title}}</td>
+            <td class="button">
+              <button pButton pRipple type="button" label="" class="p-button-secondary"
+                routerLink="/dashboard/posts-text/{{post.id}}">More...</button>
+              <button pButton pRipple type="button" label="Delete" class="p-button-danger"
+                (click)="openDialog('0ms', '0ms',post)" [disabled]="currentUser.uid !== post.created_by"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
+  </div>
 </div>

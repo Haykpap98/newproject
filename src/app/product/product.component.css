@@ -42,4 +42,11 @@
 .row {
   position: absolute;
   margin-right: 40px;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: end;
+  padding-top: 1%;
+  padding-right: 1%;
 }/*# sourceMappingURL=product.component.css.map */

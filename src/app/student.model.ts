@@ -5,7 +5,7 @@ export interface Student {
     LastName: string
     Contact: string
     Email: string
-   
+    created_by: string
 }
 
 export interface Product {
@@ -22,6 +22,10 @@ export interface Posts{
     title: string
     text: string
     author: string
-    date: Date
-
+    date: any
+    created_by: string
+}
+export interface Comments{
+    id?:number
+    comments: []
 }

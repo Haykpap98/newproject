@@ -27,16 +27,11 @@
 .table-card{
     padding-top: 55px;
 }
-// .container{
-//     position: absolute;
-//     padding-left: 25%;
-// }
-button{
-    margin-right: 15px;
+.comments{
+    border: 1px solid black;
+    margin-top: 15px;
 }
-.nav-item{
+.posts-list-author{
     display: flex;
-    justify-content: end;
-    padding-top: 1%;
-    padding-right: 1%;
+    justify-content: space-between;
 }

@@ -20,6 +20,7 @@ export class ProductService {
     return this.angularFirestore
     .collection(this.productCollection)
     .snapshotChanges()
+    
   }
   createProduct(product: Product){
       return this.angularFirestore

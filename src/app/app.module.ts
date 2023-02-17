@@ -45,6 +45,9 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import { PostsComponent } from './posts/posts.component';
+import { PostsTextComponent } from './posts-text/posts-text.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +67,7 @@ import { PostsComponent } from './posts/posts.component';
     EditProductComponent,
     AddPostsComponent,
     PostsComponent,
+    PostsTextComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +96,9 @@ import { PostsComponent } from './posts/posts.component';
     HttpClientModule,
     InputTextareaModule,
     InputMaskModule,
-    CalendarModule
+    CalendarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     // provideStorage(()=> getStorage())
   ],
   providers: [],

@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row post">
+        <div class="col-md-12 border ">
+            <div class="posts-list">
+                <div class="posts-list-author">
+                    <span>Author:{{postText?.author}}</span>
+                    <p>{{postText?.date |date}}</p>
+                </div>
+                <h4> {{postText?.title}}</h4>
+                <p>{{postText?.text}}</p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h1>Comments</h1>
+            <div class="container">
+                <div class="form-group">
+                    <form [formGroup]="formText">
+                        <textarea class="form-control" rows="5" placeholder="Your Comment Please....."
+                            formControlName="comments"></textarea>
+                        <br />
+                        <button class="btn btn-success pull-right" (click)="addComment()">Comment.</button>
+                        <br />
+                        <ul class="list-group" style="padding-top: 25px; padding-bottom: 15px;"
+                            *ngFor="let com of postComment; let i = index">
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-trash"
+                                    style="float:left ; padding: 15px;">Comments:{{com?.comments}} </span>
+                                <button style="float:right; padding: 15px;" pButton pRipple type="button"
+                                    icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"
+                                    (click)="openDialog('0ms', '0ms',com)" [disabled]="currentUser.email !== com.created_by"></button>
+                                <span style="float:right; padding: 15px;">Author:{{com?.created_by}}</span>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -30,13 +30,12 @@
   padding-top: 55px;
 }
 
-button {
-  margin-right: 15px;
+.comments {
+  border: 1px solid black;
+  margin-top: 15px;
 }
 
-.nav-item {
+.posts-list-author {
   display: flex;
-  justify-content: end;
-  padding-top: 1%;
-  padding-right: 1%;
-}/*# sourceMappingURL=posts.component.css.map */
+  justify-content: space-between;
+}/*# sourceMappingURL=posts-text.component.css.map */

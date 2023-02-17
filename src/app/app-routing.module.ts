@@ -9,6 +9,7 @@ import { EditStudentComponent } from './edit-student/edit-student.component';
 import { HomeComponent } from './home/home.component';
 import { ListStudentComponent } from './list-student/list-student.component';
 import { LoginComponent } from './login/login.component';
+import { PostsTextComponent } from './posts-text/posts-text.component';
 import { PostsComponent } from './posts/posts.component';
 import { ProductComponent } from './product/product.component';
 import { AuthGuard } from './services/auth.guard';
@@ -16,7 +17,7 @@ import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent , canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {
@@ -24,17 +25,17 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'create',    component: CreateStudentComponent },
-      { path: 'list-student', component: ListStudentComponent },
+      { path: 'list-student',component: ListStudentComponent},
+      { path: 'create', component: CreateStudentComponent },
       { path: 'update-student/:id', component: EditStudentComponent },
       { path: 'product', component: ProductComponent },
       { path: 'add-product', component: AddProductComponent },
       { path: 'update-product/:id', component: EditProductComponent },
-      { path: 'posts', component: PostsComponent},
-      { path: 'add-posts', component: AddPostsComponent},
+      { path: 'posts', component: PostsComponent },
+      { path: 'add-posts', component: AddPostsComponent },
+      { path: 'posts-text/:id', component: PostsTextComponent },
     ],
   },
-  
 ];
 
 @NgModule({

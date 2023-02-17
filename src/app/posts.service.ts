@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Posts } from './student.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-
   private postsCollection = '/posts';
   paginator: any;
   
   constructor(private angularFirestore: AngularFirestore) { }
-  getPostsDoc(id: string){
+  getPostsDoc(id:any){
     return this.angularFirestore
     .collection(this.postsCollection)
     .doc(id)
@@ -19,14 +19,23 @@ export class PostsService {
   getPoststList(){
     return this.angularFirestore
     .collection(this.postsCollection)
-    .snapshotChanges()
+    .snapshotChanges().pipe(
+      map(x=>{
+      return   x.map(doc=>{
+          const data = doc.payload.doc.data();
+          data.id = doc.payload.doc.id;
+          return data
+        })
+      })
+
+    )
   }
   createPosts(posts: Posts){
       return this.angularFirestore
       .collection(this.postsCollection)
-      .add(posts)
-      
+      .add(posts)   
   }
+
   deletePosts(posts: any){
     return this.angularFirestore
     .collection(this.postsCollection)
@@ -44,4 +53,5 @@ export class PostsService {
       date: posts.date,
     })
   }
+
 }
